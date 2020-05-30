@@ -1,4 +1,4 @@
-# JStripe [![](https://jitpack.io/v/Thibstars/JStripe.svg)](https://jitpack.io/#Thibstars/JStripe)
+# JStripe [![](https://jitpack.io/v/Thibstars/JStripe.svg)](https://jitpack.io/#Thibstars/JStripe) [![](https://jitci.com/gh/Thibstars/jstripe/svg)](https://jitci.com/gh/Thibstars/jstripe)
 #
 
 Stripe, the leader of Gremlins is responsible for unleashing hordes.
