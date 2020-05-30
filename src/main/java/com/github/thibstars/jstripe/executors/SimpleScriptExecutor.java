@@ -19,6 +19,7 @@
 
 package com.github.thibstars.jstripe.executors;
 
+import org.apache.maven.shared.utils.StringUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
@@ -31,6 +32,14 @@ public class SimpleScriptExecutor implements ScriptExecutor {
 
     @Override
     public void execute(WebDriver webDriver, String script) {
+        if (webDriver == null) {
+            throw new IllegalArgumentException("WebDriver not provided.");
+        }
+
+        if (StringUtils.isBlank(script)) {
+            throw new IllegalArgumentException("Script invalid.");
+        }
+
         JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         executor.executeScript(script);
     }

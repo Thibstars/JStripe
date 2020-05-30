@@ -49,6 +49,10 @@ public class SimpleHorde implements Horde {
 
     @Override
     public void unleash(WebDriver webDriver) {
+        if (webDriver == null) {
+            throw new IllegalArgumentException("WebDriver not provided.");
+        }
+
         log.info("Unleashing horde!");
 
         try {
@@ -60,6 +64,10 @@ public class SimpleHorde implements Horde {
 
     @Override
     public void retreat(WebDriver webDriver) {
+        if (webDriver == null) {
+            throw new IllegalArgumentException("WebDriver not provided.");
+        }
+
         log.info("Retreating horde!");
 
         try {
