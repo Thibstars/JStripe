@@ -26,6 +26,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import org.apache.commons.io.FileUtils;
+import org.apache.maven.shared.utils.StringUtils;
 
 /**
  * Script reader for web resources.
@@ -36,6 +37,10 @@ public class WebScriptReader implements ScriptReader {
 
     @Override
     public String read(String resource) throws IOException {
+        if (StringUtils.isBlank(resource)) {
+            throw new IllegalArgumentException("Resource invalid.");
+        }
+
         URL url = new URL(resource);
         File target = new File(
             System.getProperty("java.io.tmpdir") + "/jstripe/" + LocalTime.now().format(DateTimeFormatter.ofPattern("HH_mm_ss")) + "script.js");
