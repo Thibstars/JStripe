@@ -1,4 +1,4 @@
-# JStripe [![](https://jitpack.io/v/Thibstars/JStripe.svg)](https://jitpack.io/#Thibstars/JStripe) [![](https://jitci.com/gh/Thibstars/jstripe/svg)](https://jitci.com/gh/Thibstars/jstripe)
+# JStripe [![](https://jitpack.io/v/Thibstars/JStripe.svg)](https://jitpack.io/#Thibstars/JStripe) [![](https://jitci.com/gh/Thibstars/jstripe/svg)](https://jitci.com/gh/Thibstars/jstripe) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=Thibstars/jstripe)](https://dependabot.com)
 #
 
 Stripe, the leader of Gremlins is responsible for unleashing hordes.
