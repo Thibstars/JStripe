@@ -26,7 +26,6 @@ import org.openqa.selenium.WebDriver;
  *
  * @author Thibault Helsmoortel
  */
-@SuppressWarnings("unused")
 public interface Horde {
 
     void unleash(WebDriver webDriver);

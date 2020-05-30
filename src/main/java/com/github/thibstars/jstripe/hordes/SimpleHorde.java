@@ -32,7 +32,6 @@ import org.openqa.selenium.WebDriver;
  * @author Thibault Helsmoortel
  */
 @Slf4j
-@SuppressWarnings("unused")
 public class SimpleHorde implements Horde {
 
     private static final String UNLEASH_SCRIPT = "scripts/unleash_simple_horde.js";
