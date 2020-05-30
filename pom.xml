@@ -5,7 +5,7 @@
 
     <groupId>com.github.thibstars</groupId>
     <artifactId>jstripe</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
 
     <name>JStripe</name>
 
@@ -22,7 +22,9 @@
         <lombok.version>1.18.12</lombok.version>
         <maven-shared-utils.version>3.2.1</maven-shared-utils.version>
 
-        <junit-jupiter-api.version>5.6.2</junit-jupiter-api.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <mockito-core.version>3.3.3</mockito-core.version>
+        <commons-lang3.version>3.10</commons-lang3.version>
 
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
@@ -59,10 +61,29 @@
             <artifactId>maven-shared-utils</artifactId>
             <version>${maven-shared-utils.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter-api.version}</version>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

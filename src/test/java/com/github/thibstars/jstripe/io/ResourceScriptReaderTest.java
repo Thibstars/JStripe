@@ -23,6 +23,8 @@ import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.platform.commons.util.StringUtils;
 import org.springframework.core.io.DefaultResourceLoader;
 
@@ -46,5 +48,23 @@ class ResourceScriptReaderTest {
 
         Assertions.assertNotNull(result, "Result must not be null.");
         Assertions.assertFalse(StringUtils.isBlank(result), "Result must not be blank.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "     "})
+    void shouldThrowExceptionOnInvalidResource(String resource) {
+        assertExceptionOnInvalidResource(resource);
+    }
+
+    private void assertExceptionOnInvalidResource(String resource) {
+        IllegalArgumentException thrownException = Assertions
+            .assertThrows(IllegalArgumentException.class, () -> reader.read(resource), "Expected exception must be thrown for input: " + resource);
+
+        Assertions.assertEquals("Resource invalid.", thrownException.getMessage(), "Exception message must match the expected.");
+    }
+
+    @Test
+    void shouldThrowExceptionOnNullResource() {
+        assertExceptionOnInvalidResource(null);
     }
 }

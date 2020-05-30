@@ -26,6 +26,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import org.apache.commons.io.FileUtils;
+import org.apache.maven.shared.utils.StringUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
@@ -44,6 +45,10 @@ public class ResourceScriptReader implements ScriptReader {
 
     @Override
     public String read(String resource) throws IOException {
+        if (StringUtils.isBlank(resource)) {
+            throw new IllegalArgumentException("Resource invalid.");
+        }
+
         Resource loaded = resourceLoader.getResource(resource);
         InputStream inputStream = loaded.getInputStream();
         File target = new File(

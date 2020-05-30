@@ -47,6 +47,18 @@ public class JStripeServiceImpl implements JStripeService {
 
     @Override
     public void prepareBattle(BattleField battleField) {
+        if (battleField == null) {
+            throw new IllegalArgumentException("BattleField must not be null.");
+        }
+
+        if (battleField.getWebDriver() == null) {
+            throw new IllegalArgumentException("Missing WebDriver.");
+        }
+
+        if (battleField.getUrl() == null) {
+            throw new IllegalArgumentException("Missing url.");
+        }
+
         log.info("Preparing the battle...");
 
         WebDriver webDriver = battleField.getWebDriver();

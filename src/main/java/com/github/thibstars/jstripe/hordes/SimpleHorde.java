@@ -32,7 +32,6 @@ import org.openqa.selenium.WebDriver;
  * @author Thibault Helsmoortel
  */
 @Slf4j
-@SuppressWarnings("unused")
 public class SimpleHorde implements Horde {
 
     private static final String UNLEASH_SCRIPT = "scripts/unleash_simple_horde.js";
@@ -49,6 +48,10 @@ public class SimpleHorde implements Horde {
 
     @Override
     public void unleash(WebDriver webDriver) {
+        if (webDriver == null) {
+            throw new IllegalArgumentException("WebDriver not provided.");
+        }
+
         log.info("Unleashing horde!");
 
         try {
@@ -60,6 +63,10 @@ public class SimpleHorde implements Horde {
 
     @Override
     public void retreat(WebDriver webDriver) {
+        if (webDriver == null) {
+            throw new IllegalArgumentException("WebDriver not provided.");
+        }
+
         log.info("Retreating horde!");
 
         try {

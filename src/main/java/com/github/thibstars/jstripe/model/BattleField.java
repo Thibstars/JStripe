@@ -20,8 +20,10 @@
 package com.github.thibstars.jstripe.model;
 
 import java.net.URL;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -31,6 +33,8 @@ import org.openqa.selenium.WebDriver;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BattleField {
 
     private WebDriver webDriver;
