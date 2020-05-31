@@ -21,6 +21,7 @@ package com.github.thibstars.jstripe.controllers;
 
 import com.github.thibstars.jstripe.model.BattleField;
 import com.github.thibstars.jstripe.services.JStripeService;
+import lombok.RequiredArgsConstructor;
 
 /**
  * JStripe's main controller.
@@ -28,13 +29,10 @@ import com.github.thibstars.jstripe.services.JStripeService;
  * @author Thibault Helsmoortel
  */
 @SuppressWarnings("unused")
+@RequiredArgsConstructor
 public class JStripeController {
 
     private final JStripeService jStripeService;
-
-    public JStripeController(JStripeService jStripeService) {
-        this.jStripeService = jStripeService;
-    }
 
     public void prepareBattle(BattleField battleField) {
         jStripeService.prepareBattle(battleField);

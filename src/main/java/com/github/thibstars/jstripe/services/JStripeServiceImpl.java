@@ -23,6 +23,7 @@ import com.github.thibstars.jstripe.executors.ScriptExecutor;
 import com.github.thibstars.jstripe.io.WebScriptReader;
 import com.github.thibstars.jstripe.model.BattleField;
 import java.io.IOException;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 
@@ -32,6 +33,7 @@ import org.openqa.selenium.WebDriver;
  * @author Thibault Helsmoortel
  */
 @Slf4j
+@RequiredArgsConstructor
 public class JStripeServiceImpl implements JStripeService {
 
     private static final String GREMLINS_SCRIPT_URL = "https://unpkg.com/gremlins.js";
@@ -39,11 +41,6 @@ public class JStripeServiceImpl implements JStripeService {
     private final WebScriptReader webScriptReader;
 
     private final ScriptExecutor scriptExecutor;
-
-    public JStripeServiceImpl(WebScriptReader webScriptReader, ScriptExecutor scriptExecutor) {
-        this.webScriptReader = webScriptReader;
-        this.scriptExecutor = scriptExecutor;
-    }
 
     @Override
     public void prepareBattle(BattleField battleField) {

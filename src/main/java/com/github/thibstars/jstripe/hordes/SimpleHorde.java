@@ -22,6 +22,7 @@ package com.github.thibstars.jstripe.hordes;
 import com.github.thibstars.jstripe.executors.ScriptExecutor;
 import com.github.thibstars.jstripe.io.ResourceScriptReader;
 import java.io.IOException;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.WebDriver;
@@ -32,6 +33,7 @@ import org.openqa.selenium.WebDriver;
  * @author Thibault Helsmoortel
  */
 @Slf4j
+@RequiredArgsConstructor
 public class SimpleHorde implements Horde {
 
     private static final String UNLEASH_SCRIPT = "scripts/unleash_simple_horde.js";
@@ -40,11 +42,6 @@ public class SimpleHorde implements Horde {
     private final ScriptExecutor scriptExecutor;
 
     private final ResourceScriptReader scriptReader;
-
-    public SimpleHorde(ScriptExecutor scriptExecutor, ResourceScriptReader scriptReader) {
-        this.scriptExecutor = scriptExecutor;
-        this.scriptReader = scriptReader;
-    }
 
     @Override
     public void unleash(WebDriver webDriver) {
