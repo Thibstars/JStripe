@@ -17,55 +17,56 @@
  * along with JStripe.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.github.thibstars.jstripe.services;
+package com.github.thibstars.jstripe.hordes;
 
 import com.github.thibstars.jstripe.executors.ScriptExecutor;
-import com.github.thibstars.jstripe.io.WebScriptReader;
-import com.github.thibstars.jstripe.model.BattleField;
+import com.github.thibstars.jstripe.io.ResourceScriptReader;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.WebDriver;
 
 /**
- * JStripe's service for its core functionality.
- *
  * @author Thibault Helsmoortel
  */
 @Slf4j
 @RequiredArgsConstructor
-public class JStripeServiceImpl implements JStripeService {
+public class SimpleHiddenHorde implements Horde {
 
-    private static final String GREMLINS_SCRIPT_URL = "https://unpkg.com/gremlins.js";
-
-    private final WebScriptReader webScriptReader;
+    private static final String UNLEASH_SCRIPT = "scripts/unleash_simple_hidden_horde.js";
+    private static final String RETREAT_SCRIPT = "if (typeof horde !== 'undefined') horde.stop();";
 
     private final ScriptExecutor scriptExecutor;
 
+    private final ResourceScriptReader scriptReader;
+
     @Override
-    public void prepareBattle(BattleField battleField) {
-        if (battleField == null) {
-            throw new IllegalArgumentException("BattleField must not be null.");
+    public void unleash(WebDriver webDriver) {
+        if (webDriver == null) {
+            throw new IllegalArgumentException("WebDriver not provided.");
         }
 
-        if (battleField.getWebDriver() == null) {
-            throw new IllegalArgumentException("Missing WebDriver.");
-        }
-
-        if (battleField.getUrl() == null) {
-            throw new IllegalArgumentException("Missing url.");
-        }
-
-        log.info("Preparing the battle...");
-
-        WebDriver webDriver = battleField.getWebDriver();
-        webDriver.navigate().to(battleField.getUrl());
+        log.info("Unleashing horde!");
 
         try {
-            String gremlinsScript = webScriptReader.read(GREMLINS_SCRIPT_URL);
-
-            scriptExecutor.execute(webDriver, gremlinsScript);
+            scriptExecutor.execute(webDriver, scriptReader.read(UNLEASH_SCRIPT));
         } catch (IOException e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void retreat(WebDriver webDriver) {
+        if (webDriver == null) {
+            throw new IllegalArgumentException("WebDriver not provided.");
+        }
+
+        log.info("Retreating horde!");
+
+        try {
+            scriptExecutor.execute(webDriver, RETREAT_SCRIPT);
+        } catch (JavascriptException e) {
             log.error(e.getMessage(), e);
         }
     }

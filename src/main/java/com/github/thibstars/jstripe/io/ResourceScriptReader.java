@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.shared.utils.StringUtils;
 import org.springframework.core.io.Resource;
@@ -35,13 +36,10 @@ import org.springframework.core.io.ResourceLoader;
  *
  * @author Thibault Helsmoortel
  */
+@RequiredArgsConstructor
 public class ResourceScriptReader implements ScriptReader {
 
     private final ResourceLoader resourceLoader;
-
-    public ResourceScriptReader(ResourceLoader resourceLoader) {
-        this.resourceLoader = resourceLoader;
-    }
 
     @Override
     public String read(String resource) throws IOException {

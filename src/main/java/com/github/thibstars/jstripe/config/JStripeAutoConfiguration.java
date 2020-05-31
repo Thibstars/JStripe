@@ -26,7 +26,7 @@ import com.github.thibstars.jstripe.io.ResourceScriptReader;
 import com.github.thibstars.jstripe.io.WebScriptReader;
 import com.github.thibstars.jstripe.services.JStripeService;
 import com.github.thibstars.jstripe.services.JStripeServiceImpl;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +38,7 @@ import org.springframework.core.io.ResourceLoader;
  * @author Thibault Helsmoortel
  */
 @Configuration
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class JStripeAutoConfiguration {
 
     private final ResourceLoader resourceLoader;
